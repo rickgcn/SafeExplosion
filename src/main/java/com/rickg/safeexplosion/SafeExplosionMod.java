@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
     modid = SafeExplosionMod.MOD_ID,
@@ -39,5 +40,10 @@ public final class SafeExplosionMod {
             Tags.VERSION,
             Config.disableBlockDamage ? "configurable" : "enabled",
             Config.getProtectedExplosionTypesSummary());
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        event.registerServerCommand(new com.rickg.safeexplosion.command.CommandSafeExplosion());
     }
 }

@@ -37,6 +37,10 @@ public final class Config {
         synchronizeConfiguration(false);
     }
 
+    public static void reloadFromDisk() {
+        synchronizeConfiguration(true);
+    }
+
     public static Configuration getConfiguration() {
         return configuration;
     }
